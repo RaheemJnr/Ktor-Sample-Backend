@@ -1,17 +1,11 @@
 package com.example.c_hostel.routes
 
-import com.example.c_hostel.db.DB
-import com.example.c_hostel.model.User
 import com.example.c_hostel.utils.UserService
 import io.ktor.application.*
 import io.ktor.http.*
 import io.ktor.request.*
 import io.ktor.response.*
 import io.ktor.routing.*
-import org.jetbrains.exposed.sql.insert
-import org.jetbrains.exposed.sql.select
-import org.jetbrains.exposed.sql.selectAll
-import org.jetbrains.exposed.sql.transactions.transaction
 
 fun Application.userRoute(service: UserService) {
     routing {
@@ -25,12 +19,13 @@ fun Application.userRoute(service: UserService) {
 fun Route.getSingleUser(service: UserService) {
     get("/users/{id}") {
         val id = call.parameters["id"]?.toInt() ?: return@get call.respondText(
-            "Missing or malformed id",
+            text = "Missing or malformed id",
             status = HttpStatusCode.BadRequest
         )
         val user = service.find(id)
         if (user == null) {
             call.respond(HttpStatusCode.NotFound)
+            call.respondText(text = "User not Found!!")
         } else {
             call.respond(user)
         }

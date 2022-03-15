@@ -2,7 +2,6 @@ package com.example.c_hostel
 
 import com.example.c_hostel.db.DB
 import com.example.c_hostel.routes.userRoute
-import com.example.c_hostel.utils.UserService
 import com.example.c_hostel.utils.UserServiceImpl
 import io.ktor.application.*
 import io.ktor.features.*
@@ -43,24 +42,3 @@ fun Application.mainModule() {
 
 
 }
-
-//fun HTML.index() {
-//    head {
-//        title("Hello from Ktor!")
-//    }
-//    body {
-//        div {
-//            +"Hello from Ktor"
-//        }
-//    }
-//}
-
-//fun com.example.C_Hostel.main() {
-//    embeddedServer(Netty, port = 8080, host = "127.0.0.1") {
-//        routing {
-//            get("/") {
-//                call.respondHtml(HttpStatusCode.OK, HTML::index)
-//            }
-//        }
-//    }.start(wait = true)
-//}
