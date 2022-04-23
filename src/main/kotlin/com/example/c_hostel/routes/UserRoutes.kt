@@ -1,11 +1,11 @@
 package com.example.c_hostel.routes
 
 import com.example.c_hostel.utils.UserService
-import io.ktor.application.*
 import io.ktor.http.*
-import io.ktor.request.*
-import io.ktor.response.*
-import io.ktor.routing.*
+import io.ktor.server.application.*
+import io.ktor.server.request.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 
 fun Application.userRoute(service: UserService) {
     routing {

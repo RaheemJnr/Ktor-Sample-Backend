@@ -2,7 +2,7 @@ package com.example.c_hostel.utils
 
 import com.example.c_hostel.db.DB
 import com.example.c_hostel.model.User
-import org.jetbrains.exposed.dao.EntityID
+import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.insertAndGetId
 import org.jetbrains.exposed.sql.select
 import org.jetbrains.exposed.sql.selectAll

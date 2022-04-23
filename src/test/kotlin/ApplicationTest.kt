@@ -1,10 +1,10 @@
 import com.example.c_hostel.db.DB
 import com.example.c_hostel.mainModule
-import io.ktor.application.*
 import io.ktor.http.*
+import io.ktor.server.application.*
 import io.ktor.server.testing.*
 import junit.framework.Assert.assertEquals
-import org.jetbrains.exposed.dao.EntityID
+import org.jetbrains.exposed.dao.id.EntityID
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.insertAndGetId
@@ -61,8 +61,6 @@ internal class ServerTest {
                 assertEquals(HttpStatusCode.Created, response.status())
             }
         }
-
-
     }
 
     //

@@ -3,11 +3,12 @@ package com.example.c_hostel
 import com.example.c_hostel.db.DB
 import com.example.c_hostel.routes.userRoute
 import com.example.c_hostel.utils.UserServiceImpl
-import io.ktor.application.*
-import io.ktor.features.*
-import io.ktor.response.*
-import io.ktor.routing.*
 import io.ktor.serialization.*
+import io.ktor.serialization.kotlinx.json.*
+import io.ktor.server.application.*
+import io.ktor.server.plugins.contentnegotiation.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
 import kotlinx.serialization.json.Json
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.transactions.transaction
@@ -28,17 +29,14 @@ fun Application.mainModule() {
             isLenient = true
         })
     }
+
+    val service = UserServiceImpl()
+    userRoute(service = service)
     //routing
     routing {
         // status
         get("/status") {
             call.respond(mapOf("status" to "OK"))
         }
-        val service = UserServiceImpl()
-        // user endpoint route
-        userRoute(service = service)
     }
-
-
-
 }
